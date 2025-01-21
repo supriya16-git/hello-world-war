@@ -3,7 +3,17 @@
 <title>Hello World!</title>
 </head>
 <body>
-	<h1>Hello World!</h1>
+	<h1>Hello Everyone!!!</h1>
+	<p>
+		Welcome to Bangalore!!!!
+	<p>
+		This is DevOps class :):)
+	<p>
+		Hope you are doing well. 
+	<p>
+		You got this!!!
+	<p>
+		This line is drafted using script.
 	<p>
 		It is now
 		<%= new java.util.Date() %></p>

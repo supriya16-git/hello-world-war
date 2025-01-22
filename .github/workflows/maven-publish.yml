@@ -19,6 +19,17 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-
+    - name: Configure Maven settings
+      run: |
+          mkdir -p ~/.m2
+          echo "<settings>
+                  <servers>
+                    <server>
+                      <id>hello-world-war</id>
+                      <username>supriyasoft16@gmail.com</username>
+                      <password>cmVmdGtuOjAxOjE3NjkwNDY0MDI6cFFWdnNHZzZLdVBOT0RpM0xtSWdQeEx4ODUy</password>
+                    </server>
+                  </servers>
+                </settings>" > ~/.m2/settings.xml
     - name: Build with Maven
-      run: mvn clean install
+      run: mvn clean deploy

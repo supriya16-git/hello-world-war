@@ -13,7 +13,7 @@
 	<p>
 		You got this!!!
 	<p>
-		This line is drafted using script.
+		Good morning!!
 	<p>
 		It is now
 		<%= new java.util.Date() %></p>

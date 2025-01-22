@@ -9,9 +9,9 @@
 	<p>
 		This is DevOps class :):)
 	<p>
-		Hope you are doing well. Its WEd.day
+		Hope you are doing well. Its Wed.day
 	<p>
-		Good morning!!
+		Good Evening.
 	<p>
 		It is now
 		<%= new java.util.Date() %></p>

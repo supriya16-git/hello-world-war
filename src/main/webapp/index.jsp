@@ -9,9 +9,7 @@
 	<p>
 		This is DevOps class :):)
 	<p>
-		Hope you are doing well. 
-	<p>
-		You got this!!!
+		Hope you are doing well. Its WEd.day
 	<p>
 		Good morning!!
 	<p>

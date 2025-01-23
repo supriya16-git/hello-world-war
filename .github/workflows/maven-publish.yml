@@ -26,8 +26,8 @@ jobs:
                   <servers>
                     <server>
                       <id>hello-world-war</id>
-                      <username>supriyasoft16@gmail.com</username>
-                      <password>cmVmdGtuOjAxOjE3NjkwNDY0MDI6cFFWdnNHZzZLdVBOT0RpM0xtSWdQeEx4ODUy</password>
+                      <username>admin</username>
+                      <password>cmVmdGtuOjAxOjE3NjkxMzUwMzU6MGR2MUZ3VUN2M3dLN2NIcmZxZ2xWNXU3WmMy</password>
                     </server>
                   </servers>
                 </settings>" > ~/.m2/settings.xml

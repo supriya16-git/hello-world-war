@@ -26,8 +26,8 @@ jobs:
                   <servers>
                     <server>
                       <id>hello-world-war</id>
-                      <username>admin</username>
-                      <password>cmVmdGtuOjAxOjE3NjkxMzUwMzU6MGR2MUZ3VUN2M3dLN2NIcmZxZ2xWNXU3WmMy</password>
+                      <username>${{ secrets.ARTIFACTORY_USERNAME }}</username>
+                      <password>${{ secrets.ARTIFACTORY_API_KEY }}</password>
                     </server>
                   </servers>
                 </settings>" > ~/.m2/settings.xml

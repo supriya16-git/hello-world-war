@@ -11,7 +11,7 @@
 	<p>
 		Hope you are doing well. Its Wed.day
 	<p>
-		Good Night!!! GN !! Final
+		Good Night :)
 	<p>
 		It is now
 		<%= new java.util.Date() %></p>

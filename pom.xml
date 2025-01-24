@@ -14,7 +14,6 @@
         <url>http://13.233.128.14:8082/artifactory/hello-world-war-libs-release/</url>
     </repository>
 </distributionManagement>
-
 	<build>
 		<plugins>
 			<plugin>
@@ -28,7 +27,17 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
-				<version>3.3.1</version>
+				<version>3.4.0</version>
+			</plugin>
+			<plugin>
+				<groupId>org.sonarsource.scanner.maven</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>3.9.0.1503</version>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.7</version>
 			</plugin>
 		</plugins>
 	</build>

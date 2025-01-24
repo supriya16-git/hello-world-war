@@ -1,45 +1,63 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.efsavage</groupId>
-	<artifactId>hello-world-war</artifactId>
-	<version>${GITHUB_RUN_NUMBER}</version>
-	<packaging>war</packaging>
-	<name>Hello World Web Application Repository</name>
-	<description>Simplest possible Java Webapp</description>
-<distributionManagement>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.efsavage</groupId>
+  <artifactId>hello-world-war</artifactId>
+  <version>${GITHUB_RUN_NUMBER}</version>
+  <packaging>war</packaging>
+  <name>Hello World Web Application Repository</name>
+  <description>Simplest possible Java Webapp</description>
+  <distributionManagement>
     <repository>
         <id>hello-world-war</id>
         <name>hello-world-war-libs-release</name>
         <url>http://13.233.128.14:8082/artifactory/hello-world-war-libs-release/</url>
     </repository>
-</distributionManagement>
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.mortbay.jetty</groupId>
-				<artifactId>jetty-maven-plugin</artifactId>
-				<version>8.1.5.v20120716</version>
-				<configuration>
-					<scanIntervalSeconds>0</scanIntervalSeconds>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>3.4.0</version>
-			</plugin>
-			<plugin>
-				<groupId>org.sonarsource.scanner.maven</groupId>
-				<artifactId>sonar-maven-plugin</artifactId>
-				<version>3.9.0.1503</version>
-			</plugin>
-			<plugin>
-				<groupId>org.jacoco</groupId>
-				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.8.7</version>
-			</plugin>
-		</plugins>
-	</build>
+  </distributionManagement>
+  <build>
+    <plugins>
+      <plugin>
+	<groupId>org.mortbay.jetty</groupId>
+	<artifactId>jetty-maven-plugin</artifactId>
+	<version>8.1.5.v20120716</version>
+	<configuration>
+	  <scanIntervalSeconds>0</scanIntervalSeconds>
+	</configuration>
+      </plugin>
+      <plugin>
+	<groupId>org.apache.maven.plugins</groupId>
+	<artifactId>maven-war-plugin</artifactId>
+	<version>3.4.0</version>
+      </plugin>
+      <plugin>
+	<groupId>org.sonarsource.scanner.maven</groupId>
+	<artifactId>sonar-maven-plugin</artifactId>
+	<version>3.9.0.1503</version>
+      </plugin>
+      <plugin>
+	<groupId>org.jacoco</groupId>
+	<artifactId>jacoco-maven-plugin</artifactId>
+	<version>0.8.7</version>
+	<executions>
+	  <execution>
+	    <id>default-prepare-agent</id>
+	    <!--  Unique execution ID  -->
+	    <phase>prepare-package</phase>
+	    <goals>
+	      <goal>prepare-agent</goal>
+	    </goals>
+	  </execution>
+	  <execution>
+	    <id>default-report</id>
+	    <!--  Unique execution ID  -->
+	    <phase>verify</phase>
+	    <goals>
+	      <goal>report</goal>
+	    </goals>
+	  </execution>
+	</executions>	
+      </plugin>
+    </plugins>
+  </build>
 
 </project>

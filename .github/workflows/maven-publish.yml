@@ -48,3 +48,5 @@ jobs:
             echo "Quality Gate failed. Exiting."
             exit 1
           fi
+    - name: Build with Maven
+      run: mvn clean deploy

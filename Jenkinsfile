@@ -1,17 +1,16 @@
 pipeline {
-    agent none
+    agent any
     stages 
     {
-        stage('test') { 
-            agent any
+        stage('checkout') { 
             steps {
-                echo 'Hello World'
+                sh 'ls'
+                sh 'pwd'
             }
         }
-         stage('sample') { 
-             agent { label 'node' }
+         stage('build') { 
             steps {
-                echo 'Welcome to devops'
+                sh 'mvn clean package'
             }
         }
     }

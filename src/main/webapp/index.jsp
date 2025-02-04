@@ -11,7 +11,7 @@
 	<p>
 		Hope you are doing well. Its Tuesday.
 	<p>
-		Good Night!!!
+		Finally did the CICD set up!!!
 	<p>
 		It is now
 		<%= new java.util.Date() %></p>

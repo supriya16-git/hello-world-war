@@ -1,23 +1,26 @@
 pipeline {
-    agent { label 'build-server'}
+    agent none
     environment {
         ARTIFACTORY_CREDENTIALS = credentials('jfrog_artifactory_credentials')
     }
         
     stages 
     {
-        stage('checkout') { 
+        stage('checkout') {
+            agent { label 'build-server'}
             steps {
                 sh 'ls'
                 sh 'pwd'
             }
         }
-         stage('build') { 
+         stage('build') {
+             agent { label 'build-server'}
             steps {
                 sh 'mvn clean package'
             }
         }
          stage('publish') { 
+             agent { label 'build-server'}
             steps {
                 sh 'mkdir -p ~/.m2'
                 sh '''
@@ -33,7 +36,6 @@ pipeline {
                     '''
                 sh 'cat ~/.m2/settings.xml'
                 sh 'mvn clean deploy'
-                
             }
              
         }

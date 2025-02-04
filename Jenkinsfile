@@ -18,13 +18,15 @@ pipeline {
          stage('build') {
              agent { label 'build-server'}
             steps {
-                sh 'mvn clean package'
+                node {
+                    sh 'mvn clean package'
+                }
             }
         }
         stage('SonarQube Analysis') {
             agent { label 'build-server' }
             steps {
-                script {
+                node {
                     withSonarQubeEnv(SONARQUBE_SERVER) {
                         sh "${MAVEN_HOME}/bin/mvn sonar:sonar -Dsonar.projectKey=sonar-token"
                     }
@@ -34,8 +36,9 @@ pipeline {
          stage('publish') { 
              agent { label 'build-server'}
             steps {
-                sh 'mkdir -p ~/.m2'
-                sh '''
+                node {
+                    sh 'mkdir -p ~/.m2'
+                    sh '''
                     echo "<settings>
                             <servers>
                                 <server>
@@ -48,16 +51,19 @@ pipeline {
                     '''
                 sh 'cat ~/.m2/settings.xml'
                 sh 'mvn clean deploy'
+                }
             }    
         }
        stage('deploy') {
            agent { label 'deployer'}
            steps {
+               node {
                 sh 'curl -L -u "${ARTIFACTORY_CREDENTIALS_USR}:${ARTIFACTORY_CREDENTIALS_PSW}" -O "http://65.2.172.21:8082/artifactory/jenkins-hello-world-libs-release/com/efsavage/hello-world-war/${BUILD_NUMBER}/hello-world-war-${BUILD_NUMBER}.war"'
                 sh 'ls'
-               sh 'sudo cp hello-world-war-${BUILD_NUMBER}.war /opt/tomcat/apache-tomcat-10.1.34/webapps/'
-               sh 'sudo bash /opt/tomcat/apache-tomcat-10.1.34/bin/shutdown.sh'
-               sh 'sudo bash /opt/tomcat/apache-tomcat-10.1.34/bin/startup.sh'
+                sh 'sudo cp hello-world-war-${BUILD_NUMBER}.war /opt/tomcat/apache-tomcat-10.1.34/webapps/'
+                sh 'sudo bash /opt/tomcat/apache-tomcat-10.1.34/bin/shutdown.sh'
+                sh 'sudo bash /opt/tomcat/apache-tomcat-10.1.34/bin/startup.sh'
+               }
            }
        }
     }   

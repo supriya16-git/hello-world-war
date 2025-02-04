@@ -36,9 +36,14 @@ pipeline {
                     '''
                 sh 'cat ~/.m2/settings.xml'
                 sh 'mvn clean deploy'
-            }
-             
+            }    
         }
-        
-    }
+       stage('deploy') {
+           agent { label 'deployer'}
+           steps {
+                sh 'curl -L -u "${ARTIFACTORY_CREDENTIALS_USR}:${ARTIFACTORY_CREDENTIALS_PSW}" -O "http://13.201.54.40:8082/artifactory/jenkins-hello-world-libs-release/com/efsavage/hello-world-war/25/hello-world-war-${BUILD_NUMBER}.war"'
+                sh 'ls'
+           }
+       }
+    }   
 }

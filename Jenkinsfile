@@ -2,8 +2,6 @@ pipeline {
     agent none
     environment {
         ARTIFACTORY_CREDENTIALS = credentials('jfrog_artifactory_credentials')
-        SONARQUBE_SERVER = 'sonar'
-        MAVEN_HOME = tool name: 'Maven', type: 'ToolLocation'
     }
         
     stages 
@@ -19,17 +17,6 @@ pipeline {
              agent { label 'build-server'}
             steps {
                 sh 'mvn clean package'
-            }
-        }
-        stage('SonarQube Analysis') {
-            agent { label 'build-server' }
-            steps {
-                script {
-                    // Trigger SonarQube analysis using the SonarQube Scanner for Maven
-                    withSonarQubeEnv(SONARQUBE_SERVER) {
-                        sh "${MAVEN_HOME}/bin/mvn sonar:sonar -Dsonar.projectKey=sonar-token"
-                    }
-                }
             }
         }
          stage('publish') { 

@@ -1,0 +1,35 @@
+@library('shared-library-prac@main')
+pipeline {
+    agent none
+    environment {
+        ARTIFACTORY_CREDENTIALS = credentials('jfrog_artifactory_credentials')
+    }
+        
+    stages 
+    {
+        stage('checkout') {
+            agent { label 'build-server'}
+            steps {
+              checkoutStage()
+            }
+        }
+         stage('build') {
+             agent { label 'build-server'}
+            steps {
+              buildStage()
+                }
+            }
+         stage('publish') { 
+             agent { label 'build-server'}
+            steps {
+              publishStage()
+            }    
+        }
+       stage('deploy') {
+           agent { label 'deployer'}
+           steps {
+            deployStage()
+           }
+       }
+    }   
+}

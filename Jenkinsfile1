@@ -28,7 +28,7 @@ pipeline {
        stage('deploy') {
            agent { label 'deployer'}
            steps {
-            deployStage()
+            deployStage($BUILD_NUMBER)
            }
        }
     }   

@@ -10,7 +10,7 @@ pipeline {
                agent { label 'build-server'}
                steps {
                    script {
-                       sh "sed 's/Its Tuesday/Thank God Thursday/g' /src/main/webapp/index.jsp"
+                       sh "sed -i 's/Its Tuesday/Thank God Thursday/g' src/main/webapp/index.jsp"
                    }
                }
             }

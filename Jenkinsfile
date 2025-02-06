@@ -24,7 +24,7 @@ pipeline {
          stage('build') {
              agent { label 'build-server'}
             steps {
-                    sh 'mvn clean package'
+                    sh 'mvn clean package -U'
                 }
             }
          stage('publish') { 

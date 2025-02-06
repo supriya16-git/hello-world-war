@@ -6,14 +6,6 @@ pipeline {
         
     stages 
     {
-        stage ( 'edit index.jsp') {
-               agent { label 'build-server'}
-               steps {
-                   sh "cat src/main/webapp/index.jsp"  
-                   sh "sed -i 's/Its Tuesday/Thank God Thursday/g' src/main/webapp/index.jsp"
-                   sh "cat src/main/webapp/index.jsp" 
-                   }
-               }
         stage('checkout') {
             agent { label 'build-server'}
             steps {
@@ -21,6 +13,14 @@ pipeline {
                 sh 'pwd'
             }
         }
+        stage ( 'edit index.jsp') {
+            agent { label 'build-server'}
+            steps {
+                sh "cat src/main/webapp/index.jsp"  
+                sh "sed -i 's/Its Tuesday/Thank God Thursday/g' src/main/webapp/index.jsp"
+                sh "cat src/main/webapp/index.jsp" 
+                }
+        }   
          stage('build') {
              agent { label 'build-server'}
             steps {

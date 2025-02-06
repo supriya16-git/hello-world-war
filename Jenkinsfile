@@ -11,7 +11,6 @@ pipeline {
                steps {
                    echo "This is indirect edit by adding in pipeline"
                    echo "Thank God Thursday"
-                   sh 'sed 's/Its Tuesday//g' /src/main/webapp/index.jsp'
                }
             }
         stage('checkout') {

@@ -9,8 +9,8 @@ pipeline {
         stage ( 'edit index.jsp') {
                agent { label 'build-server'}
                steps {
-                   script {
-                       sh "sed -i 's/Its Tuesday/Thank God Thursday/g' src/main/webapp/index.jsp"
+                   sh "ls -l src/main/webapp/"
+                   sh "cat src/main/webapp/index.jsp"
                    }
                }
             }

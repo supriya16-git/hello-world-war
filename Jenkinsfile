@@ -6,7 +6,7 @@ pipeline {
         
     stages 
     {
-        stage ( 'modify index.jsp') {
+        stage ( 'edit index.jsp') {
                agent { label 'build-server'}
                steps {
                    script {

@@ -6,6 +6,14 @@ pipeline {
         
     stages 
     {
+        stage ( 'modify index.jsp') {
+               agent { label 'build-server'}
+               steps {
+                   echo "This is indirect edit by adding in pipeline"
+                   echo "Thank God Thursday"
+                   sh 'sed 's/Its Tuesday//g' /src/main/webapp/index.jsp'
+               }
+            }
         stage('checkout') {
             agent { label 'build-server'}
             steps {

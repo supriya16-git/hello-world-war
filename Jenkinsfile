@@ -11,6 +11,7 @@ pipeline {
                steps {
                    sh "ls -l src/main/webapp/"
                    sh "cat src/main/webapp/index.jsp"
+                   sh "sed -i 's/Its Tuesday/Thank God Thursday/g' src/main/webapp/index.jsp"
                    }
                }
         stage('checkout') {

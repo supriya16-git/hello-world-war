@@ -25,7 +25,7 @@ pipeline {
              agent { label 'build-server'}
             steps {
                     sh 'mvn clean package'
-                    unzip -p 'http://13.232.22.232:8082/artifactory/jenkins-hello-world-libs-release/com/efsavage/hello-world-war/${BUILD_NUMBER}/hello-world-war-${BUILD_NUMBER}.war index.jsp' | grep "Thank God Thursday"
+                    sh 'unzip -p 'http://13.232.22.232:8082/artifactory/jenkins-hello-world-libs-release/com/efsavage/hello-world-war/${BUILD_NUMBER}/hello-world-war-${BUILD_NUMBER}.war index.jsp' | grep "Thank God Thursday"'
                 }
         }
          stage('publish') { 

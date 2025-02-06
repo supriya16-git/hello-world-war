@@ -25,7 +25,6 @@ pipeline {
              agent { label 'build-server'}
             steps {
                     sh 'mvn clean package'
-                    sh 'unzip -p 'http://13.232.22.232:8082/artifactory/jenkins-hello-world-libs-release/com/efsavage/hello-world-war/${BUILD_NUMBER}/hello-world-war-${BUILD_NUMBER}.war index.jsp' | grep "Thank God Thursday"'
                 }
         }
          stage('publish') { 
@@ -54,8 +53,6 @@ pipeline {
                 sh 'ls'
                 sh 'sudo cp hello-world-war-${BUILD_NUMBER}.war /opt/tomcat/apache-tomcat-10.1.34/webapps/'
                 sh 'sudo bash /opt/tomcat/apache-tomcat-10.1.34/bin/shutdown.sh'
-                sh 'sleep 5'
-                sh 'sudo rm -rf /opt/tomcat/apache-tomcat-10.1.34/work/*'
                 sh 'sudo bash /opt/tomcat/apache-tomcat-10.1.34/bin/startup.sh'
            }
        }

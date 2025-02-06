@@ -13,7 +13,6 @@ pipeline {
                    sh "cat src/main/webapp/index.jsp"
                    }
                }
-            }
         stage('checkout') {
             agent { label 'build-server'}
             steps {

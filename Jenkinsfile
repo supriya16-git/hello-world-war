@@ -24,7 +24,8 @@ pipeline {
          stage('build') {
              agent { label 'build-server'}
             steps {
-                    sh 'mvn clean package -U'
+                    sh 'mvn clean package'
+                    unzip -p target/hello-world-war.war index.jsp | grep "Thank God Thursday"
                 }
             }
          stage('publish') { 

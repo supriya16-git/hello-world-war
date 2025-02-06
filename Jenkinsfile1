@@ -28,7 +28,7 @@ pipeline {
        stage('deploy') {
            agent { label 'deployer'}
            steps {
-            deployStage(env.BUILD_NUMBER, '3.111.168.242')
+            deployStage(env.BUILD_NUMBER, '13.232.22.232')
            }
        }
     }   

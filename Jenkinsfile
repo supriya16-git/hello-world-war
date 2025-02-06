@@ -9,8 +9,9 @@ pipeline {
         stage ( 'modify index.jsp') {
                agent { label 'build-server'}
                steps {
-                   echo "This is indirect edit by adding in pipeline"
-                   echo "Thank God Thursday"
+                   script {
+                   sed "sed 's/Its Tuesday/Thank God Thursday/g' /src/main/webapp/index.jsp"
+                   }
                }
             }
         stage('checkout') {

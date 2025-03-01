@@ -12,7 +12,6 @@ pipeline {
                 sh 'pwd'
             }
         }
-    {
          stage('build') {
             steps {
                     sh 'cat src/main/webapp/index.jsp'

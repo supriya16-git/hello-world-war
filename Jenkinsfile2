@@ -30,8 +30,6 @@ pipeline {
                 </servers>
              </settings>" > ~/.m2/settings.xml
           '''
-       sh 'cat ~/.m2/settings.xml'
-       sh 'cat src/main/webapp/index.jsp'
        sh 'mvn clean deploy'
       }
     }

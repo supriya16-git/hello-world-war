@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'build-server'}
+    agent any
     environment {
         ARTIFACTORY_CREDENTIALS = credentials('jfrog_artifactory_credentials')
     }
@@ -36,7 +36,6 @@ pipeline {
             }    
         }
        stage('deploy') {
-           agent { label 'deployer'}
            steps {
                 sh 'curl -L -u "${ARTIFACTORY_CREDENTIALS_USR}:${ARTIFACTORY_CREDENTIALS_PSW}" -O "http://13.232.22.232:8082/artifactory/jenkins-hello-world-libs-release/com/efsavage/hello-world-war/${BUILD_NUMBER}/hello-world-war-${BUILD_NUMBER}.war"'
                 sh 'ls'

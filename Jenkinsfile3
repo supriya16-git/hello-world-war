@@ -27,7 +27,6 @@ pipeline {
 		}
 		
 		stage('deploy') {
-			agent { label 'deployer' }
 			steps {
 				sh """
 				docker login -u supriyabs -p 123@docker https://hub.docker.com/repository/docker/supriyabs/tomcat/general

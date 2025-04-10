@@ -1,0 +1,47 @@
+pipeline {
+	agent any
+	
+	stages
+	{
+		stage('checkout') {
+			steps {
+				sh 'pwd'
+				
+			}
+		}
+		
+		stage('docker build') {
+			steps {
+				sh 'docker build -t tomcat:t1 .'
+			}
+		}
+		
+		stage('publish') {
+			steps {
+				sh """
+				docker login -u supriyabs -p 123@docker
+				docker tag tomcat:t1 supriyabs/tomcat:t1
+				docker push supriyabs/tomcat:t1
+				"""
+			}
+		}
+		
+		stage('deploy') {
+			agent { label 'deployer' }
+			steps {
+				sh """
+				docker login -u supriyabs -p 123@docker https://hub.docker.com/repository/docker/supriyabs/tomcat/general
+				docker pull supriyabs/tomcat:t1
+				docker run -t -p 8080:8080 supriyabs/tomcat:t1
+				"""
+			}
+		}
+		
+		post {
+			cleanup {
+				sh 'docker system prune -f'
+			}
+		}
+	}
+}
+

@@ -29,8 +29,10 @@ pipeline {
 		stage('deploy') {
 			steps {
 				sh """
-				docker login -u supriyabs -p 123@docker https://hub.docker.com/repository/docker/supriyabs/tomcat/general
+				docker ps
+				docker login -u supriyabs -p 123@docker
 				docker pull supriyabs/tomcat:t1
+				docker images
 				docker run -t -p 8080:8080 supriyabs/tomcat:t1
 				"""
 			}
